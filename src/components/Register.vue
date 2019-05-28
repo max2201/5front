@@ -44,20 +44,20 @@ export default {
   },
   methods: {
     handleSubmit(e) {
-      e.preventDefault()
+      e.preventDefault();
       if (this.password === this.password_confirmation && this.password.length > 0) {
-        const url = 'http://localhost:3000/auth/signup'
+        const url = 'http://localhost:3000/auth/signup';
         this.$http.post(url, {
           userName: this.userName,
           email: this.email,
           password: this.password,
         })
           .then(response => {
-            localStorage.setItem('user', JSON.stringify(response.data.user))
-            localStorage.setItem('jwt', response.data.token)
+            localStorage.setItem('user', JSON.stringify(response.data.user));
+            localStorage.setItem('jwt', response.data.token);
 
             if (localStorage.getItem('jwt') != null) {
-              this.$emit('loggedIn')
+              this.$emit('loggedIn');
               if (this.$route.params.nextUrl != null) {
                 this.$router.push(this.$route.params.nextUrl);
               } else {
@@ -69,8 +69,8 @@ export default {
             console.error(error);
           });
       } else {
-        this.password = ''
-        this.passwordConfirm = ''
+        this.password = '';
+        this.password_confirmation = '';
         return alert('Passwords do not match');
       }
     },
