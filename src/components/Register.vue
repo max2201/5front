@@ -60,8 +60,7 @@ export default {
               this.$emit('loggedIn')
               if (this.$route.params.nextUrl != null) {
                 this.$router.push(this.$route.params.nextUrl);
-              }
-              else {
+              } else {
                 this.$router.push('/');
               }
             }
