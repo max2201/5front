@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>This is homepage</h1>
+    <h1>Welcome to users page</h1>
     <h2>{{msg}}</h2>
   </div>
 </template>
@@ -9,12 +9,12 @@
   export default {
     data () {
       return {
-        msg: 'Hello!'
+        msg: 'there will be users list'
       }
     }
   }
 </script>
+
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 </style>
