@@ -5,7 +5,7 @@ import Login from '@/components/Login.vue';
 import Register from '@/components/Register.vue';
 import UserBoard from '@/components/UserBoard.vue';
 
-Vue.use(Router)
+Vue.use(Router);
 
 const router = new Router({
   mode: 'history',
@@ -13,7 +13,7 @@ const router = new Router({
     {
       path: '/',
       name: 'HelloWorld',
-      component: HelloWorld
+      component: HelloWorld,
     },
     {
       path: '/login',
@@ -40,7 +40,7 @@ const router = new Router({
       },
     },
   ],
-})
+});
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
@@ -50,7 +50,7 @@ router.beforeEach((to, from, next) => {
         params: { nextUrl: to.fullPath },
       });
     } else {
-      let user = JSON.parse(localStorage.getItem('user'))
+      const user = JSON.parse(localStorage.getItem('user'));
       next({ name: 'userboard' });
     }
   } else if (to.matched.some(record => record.meta.guest)) {
@@ -62,6 +62,6 @@ router.beforeEach((to, from, next) => {
   } else {
     next();
   }
-})
+});
 
-export default router
+export default router;

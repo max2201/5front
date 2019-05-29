@@ -46,13 +46,13 @@ export default {
     handleSubmit(e) {
       e.preventDefault();
       if (this.password === this.password_confirmation && this.password.length > 0) {
-        const url = 'http://localhost:3000/auth/signup';
-        this.$http.post(url, {
+        // const url = '/api/auth/signup';
+        this.$http.post('/api/auth/signup', {
           userName: this.userName,
           email: this.email,
           password: this.password,
         })
-          .then(response => {
+          .then((response) => {
             localStorage.setItem('user', JSON.stringify(response.data.user));
             localStorage.setItem('jwt', response.data.token);
 
@@ -65,7 +65,7 @@ export default {
               }
             }
           })
-          .catch(error => {
+          .catch((error) => {
             console.error(error);
           });
       } else {

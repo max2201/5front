@@ -30,24 +30,24 @@ export default {
   },
   methods: {
     handleSubmit(e) {
-      e.preventDefault()
+      e.preventDefault();
       if (this.password.length > 0) {
         this.$http.post('http://localhost:3000/login', {
           email: this.email,
-          password: this.password
+          password: this.password,
         })
-          .then(response => {
-            localStorage.setItem('user', JSON.stringify(response.data.user))
-            localStorage.setItem('jwt', response.data.token)
+          .then((response) => {
+            localStorage.setItem('user', JSON.stringify(response.data.user));
+            localStorage.setItem('jwt', response.data.token);
 
             if (localStorage.getItem('jwt') != null) {
-              this.$emit('loggedIn')
+              this.$emit('loggedIn');
               if (this.$route.params.nextUrl != null) {
                 this.$router.push(this.$route.params.nextUrl);
               } else { this.$router.push('userboard'); }
             }
           })
-          .catch(function (error) {
+          .catch((error) => {
             console.error(error.response);
           });
       }
